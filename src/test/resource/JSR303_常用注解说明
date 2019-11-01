@@ -1,0 +1,10 @@
+@Null           必须为空 客户端传值则错
+@NotNull        必须为非空
+@Min            验证number和String对象是否大等于指定对象
+@Max            验证Number和String对象是否小等于指定对象
+@Size           指定对象(Array,Collection,Map,String)长度是否在给定的范围
+@Past           验证Date和Calendar对象是否在当前时间之前
+@Future         验证Date和Calendar对象是否在当前时间之后
+@AssertTrue     验证Boolean对象是否为true
+@AssertFalse    验证Boolean对象是否为false
+@Valid          级联验证注解 (注解表示bean中的值需要验证,否则默认不验证)

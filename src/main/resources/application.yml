@@ -1,0 +1,24 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd #时间 字符串格式
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/hx-channel?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    name: root
+    password: xnn123
+
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+#mybatis.configuration.mapUnderscoreToCamelCase: true
+
+logging:
+  file: target/springboot_test.log
+  level:
+    ROOT: warn
+    com.example.firstspringboot: debug #打印日志的最低级别 trace < debug < info < warn < error < fatal
+
+

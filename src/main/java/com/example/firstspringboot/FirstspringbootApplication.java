@@ -1,0 +1,16 @@
+package com.example.firstspringboot;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan("com.example.firstspringboot.dao")
+public class FirstspringbootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(FirstspringbootApplication.class, args);
+    }
+
+}
+
