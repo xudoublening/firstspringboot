@@ -15,6 +15,7 @@ public class BaseController {
     
     public String getServletIP(HttpServletRequest request){
         String ip = request.getRemoteAddr();
+        log.debug("Start ip:"+ip);
         // 优先取 X-Real-IP
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)){
             ip = request.getHeader("X-Real-IP");
@@ -33,6 +34,7 @@ public class BaseController {
             ip = ERROR_IP;
             return ip;
         }
+        log.debug("get ip:"+ip);
         int index = ip.indexOf(',');
         if (index >= 0) {
             ip = ip.substring(0, index);
