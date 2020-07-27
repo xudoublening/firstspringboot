@@ -33,18 +33,24 @@ public class Consumer {
 
     public static void test1(final String n, String topicStr) throws Exception{
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("47.114.49.155");
+        /*factory.setHost("47.114.49.155");
 //        factory.setHost("localhost");
         factory.setPort(5672);
         factory.setUsername("hxlx");
         factory.setPassword("hxlx123");
-        factory.setVirtualHost("vhost_test");
+        factory.setVirtualHost("vhost_test");*/
 
         /*factory.setHost("117.78.48.183");
         factory.setPort(5672);
         factory.setUsername("hxlx");
         factory.setPassword("hxlx123");
         factory.setVirtualHost("hx_vhost");*/
+
+        factory.setHost("117.78.39.115");
+        factory.setPort(5672);
+        factory.setUsername("huaxiang10036");
+        factory.setPassword("HX_rabbitmq619");
+        factory.setVirtualHost("huaxiang10036");
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();

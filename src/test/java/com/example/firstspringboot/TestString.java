@@ -6,9 +6,22 @@ import java.util.Date;
 import java.util.UUID;
 
 public class TestString {
+
+    private static String aa = "\n";
+
     public static void main(String[] args) {
 
-        test2(null,null," s_flag=:flag ORDER BY creat_time asc",0,100);
+        long aa = 456787699L;
+        System.out.println(String.format("%06d", aa));
+        /*String aa = "1";
+        String bb = "11";
+        bb = aa==null?""+"111":"aa"+"111";
+        System.out.println("["+bb+"]");*/
+        /*StringBuffer stringBuffer = new StringBuffer();
+        String s = "<jisjdi>";
+        System.out.println(stringBuffer.append(s + aa));
+
+        test2(null,null," s_flag=:flag ORDER BY creat_time asc",0,100);*/
 
     }
 

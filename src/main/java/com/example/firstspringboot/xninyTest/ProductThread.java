@@ -21,9 +21,12 @@ public class ProductThread implements Runnable {
     public void run() {
 
         System.out.println("发送线程开始》》》》》》");
-        String[] d = {"wechat.template.directSend","{\"touser\":\"oU8Ki0o6x2U6qczi0kf7wcR18rJ8\",\"template_id\":\"SuZxA4GfVYZQFT6mFq3ackiYIC6xGxlwn4QtIIohSjU\",\"url\":\"http://weixin.qq.com\",\"data\":{\"first\":{\"value\": \"小主，您的套餐情况出炉啦！\",\"color\":\"#173177\"},\"keyword1\":{\"value\":\"${PHONE}\",\"color\":\"#173177\"},\"keyword2\":{\"value\":\"${NOW_TIME}\",\"color\":\"#173177\"},\"keyword3\":{\"value\": \"${PRODUCT_NAME}\",\"color\":\"#173177\"},\"remark\":{\"value\": \"感谢您的使用！\",\"color\": \"#173177\"}}}"};
-        for (int i=0;i<20;i++){
+//        String[] d = {"wechat.template.directSend","{\"touser\":\"oU8Ki0o6x2U6qczi0kf7wcR18rJ8\",\"template_id\":\"SuZxA4GfVYZQFT6mFq3ackiYIC6xGxlwn4QtIIohSjU\",\"url\":\"http://weixin.qq.com\",\"data\":{\"first\":{\"value\": \"小主，您的套餐情况出炉啦！\",\"color\":\"#173177\"},\"keyword1\":{\"value\":\"${PHONE}\",\"color\":\"#173177\"},\"keyword2\":{\"value\":\"${NOW_TIME}\",\"color\":\"#173177\"},\"keyword3\":{\"value\": \"${PRODUCT_NAME}\",\"color\":\"#173177\"},\"remark\":{\"value\": \"感谢您的使用！\",\"color\": \"#173177\"}}}"};
+
+        for (int i=0;i<200;i++){
             try {
+                String wy = Thread.currentThread().getName()+"-data:"+i;
+                String[] d = {"wechat.template.directSend",wy};
                 test1("topic-test-4 ", d,i*sleep*10);
                 // 不同的休眠时间 测试通道占用
                 Thread.sleep(sleep);

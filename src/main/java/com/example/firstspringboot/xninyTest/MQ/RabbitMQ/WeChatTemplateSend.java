@@ -34,8 +34,8 @@ public class WeChatTemplateSend {
         if (args.length > 0)
             System.out.println(args[0]);
         System.out.println("====end===");
-//        System.out.println(getAccessToken());
-//        sendMessage();
+        System.out.println(getAccessToken());
+        sendMessage("111");
     }
 
     public static String sendMessage(String title){

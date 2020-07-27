@@ -51,7 +51,7 @@ public class TemplateStringTest {
                 "    }\n" +
                 "}";
 
-        String paramVar = "${NOW_TIME}:2020060509 ^${PRODUCT_NAME}:华翔畅游30元流量包used0.00 M,over1024.00 M.";
+        String paramVar = "${NOW_TIME}:202006150933 ^${PRODUCT_NAME}:华翔畅游70元流量包GPRS:used6144.00 M,over0.00 M;华翔畅游100元流量包GPRS:used10503.71 M,over0.00 M. ^${PHONE}:17090010010";
 
         JSONObject columnJson = JSONObject.parseObject(column);
         JSONObject data = columnJson.getJSONObject("data");
@@ -254,13 +254,19 @@ public class TemplateStringTest {
         Map<String,String> paramMap = new HashMap<>();
 
         for (int i=0;i<params.length;i++) {
-            String[] thisParam = params[i].split(":");
-            if (thisParam.length != 2){
+            int index = params[i].indexOf(":");
+            System.out.println("当前字符串["+ params[i]+"]符合':'角标："+index);
+            if (index == -1){
                 System.out.println("当前["+params[i]+"]格式不正确！");
-                return null;
+            }else{
+                String key = params[i].substring(0,index);
+                String value = params[i].substring(index+1,params[i].length());
+                System.out.println(params[i]);
+                System.out.println(key+":"+value);
+                paramMap.put(key,value);
             }
-            paramMap.put(thisParam[0],thisParam[1]);
         }
+        System.out.println(JSONObject.toJSONString(paramMap));
 
         /** 消息模板占位符填充 **/
         String str = templateData.toJSONString();
