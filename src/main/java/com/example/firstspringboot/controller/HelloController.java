@@ -1,23 +1,42 @@
 package com.example.firstspringboot.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.firstspringboot.dto.FileUploadReq;
 import com.example.firstspringboot.dto.GnSysConfig;
 import com.example.firstspringboot.dto.Student;
 import com.example.firstspringboot.service.GnSysConfigService;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.util.*;
-
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/hello")
 public class HelloController {
 
     private static final Log log = LogFactory.getLog(HelloController.class);
@@ -133,7 +152,39 @@ public class HelloController {
         }
         return result;
     }
-
+    
+    @RequestMapping("/fileUpload")
+    public @ResponseBody Object fileUpload(HttpServletRequest request){
+        String data = request.getParameter("data");
+        return fileUpload(data);
+    }
+    
+    public Object fileUpload(String data) {
+        // log.info("文件上传开始！data=" + data.substring(0,100)+"..."+data.substring(data.length()-101));
+        FileUploadReq fileUploadReq = new FileUploadReq();
+        try {
+            // System.out.println("json是空?: " + JSONObject.toJSONString(data).isEmpty());
+            // Gson gson = new Gson();
+            // fileUploadReq = gson.fromJson(data,FileUploadReq.class);
+            fileUploadReq = JSON.toJavaObject(JSON.parseObject(data),
+                    FileUploadReq.class);
+            if (fileUploadReq.getFileInfo() == null || fileUploadReq.getFileInfo().equals("")) {
+                System.out.println("传入的Base64编码文件流字符串为空！");
+            }
+        } catch (Exception e) {
+            log.error("获取参数异常！");
+            e.printStackTrace();
+            return null;
+        }
+    
+        log.info("文件上传成功，base64长度：" + fileUploadReq.getFileInfo().length());
+        JSONObject object = new JSONObject();
+        object.put("fileId", "fileId");
+        log.info("文件上传成功，结果为：" + object);
+        return object;
+    }
+    
+    
     private Student getStu101(){
         Calendar calendar = Calendar.getInstance();
         calendar.set(2014,Calendar.SEPTEMBER,1,0,0);

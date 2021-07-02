@@ -20,5 +20,6 @@ logging:
   level:
     ROOT: warn
     com.example.firstspringboot: debug #打印日志的最低级别 trace < debug < info < warn < error < fatal
-
-
+server:
+    tomcat:
+        max-http-post-size: 10MB

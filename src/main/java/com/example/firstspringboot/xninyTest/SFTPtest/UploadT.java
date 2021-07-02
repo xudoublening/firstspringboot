@@ -1,15 +1,6 @@
 package com.example.firstspringboot.xninyTest.SFTPtest;
 
-import com.ailk.mvno.crm.utils.util.ExceptionUtil;
-import com.ailk.mvno.crm.utils.util.SFTPUtils;
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.SftpATTRS;
-import com.jcraft.jsch.SftpException;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * @program: firstspringboot
@@ -19,7 +10,7 @@ import java.io.IOException;
  **/
 public class UploadT {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         String foldName = null;
         if (args.length > 0) {
@@ -163,7 +154,7 @@ public class UploadT {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 
 
     public static String getTempFilePath() {

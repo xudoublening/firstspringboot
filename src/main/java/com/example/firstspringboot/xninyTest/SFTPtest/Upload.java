@@ -1,16 +1,6 @@
 package com.example.firstspringboot.xninyTest.SFTPtest;
 
-import com.ailk.mvno.crm.utils.util.ExceptionUtil;
-import com.ailk.mvno.crm.utils.util.SFTPUtils;
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.SftpATTRS;
-import com.jcraft.jsch.SftpException;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * @program: firstspringboot
@@ -20,7 +10,7 @@ import java.io.IOException;
  **/
 public class Upload {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         String foldName = null;
         if (args.length > 0){
@@ -35,7 +25,7 @@ public class Upload {
 
     public final static String OPERATOR_ID = "0009"; // 运营商标识
 
-    /**
+    *//**
      * 1.数据文件
      * F代表全量文件,P代表增量文件,文件序列号最大为9999,不分割时固定为0001
      * 0001_2017021600_F_0001.TXT, 表示某虚商截止2017年2月16日0时之前的全量用户数据
@@ -45,7 +35,7 @@ public class Upload {
      * 2.校验文件
      * 数据文件名为NNNN_20170215_F_0001.TXT的数据文件,行数为10000行,文件大小为343284字节
      * 其对于的校验文件内容为：NNNN_20170215_F_0001.TXT 10000 343284
-     */
+     *//*
     public static File createFile(String fileName) {
         // 缓存路径
         String filePath = getTempFilePath();
@@ -66,13 +56,13 @@ public class Upload {
         file.mkdirs();
     }
 
-    /**
+    *//**
      * 使用可持续写入的输出流进行写入
      *
      * @param contents 本次需要写入的内容
      * @param fos      可持续写入的输出流
      * @return
-     */
+     *//*
     public static FileOutputStream sustainableFileWriter(FileOutputStream fos, String contents) {
 
         try {
@@ -88,11 +78,11 @@ public class Upload {
         return fos;
     }
 
-    /**
+    *//**
      * 本地文件上传
      *
      * @param foldName 文件夹
-     */
+     *//*
     public static void uploadFile(String foldName) {
 
         System.out.println("ftp233------------文件上传开始-----------");
@@ -134,12 +124,12 @@ public class Upload {
         System.out.println("ftp233------------文件上传结束-----------");
     }
 
-    /**
+    *//**
      * 拷贝本地文件到FTP
      *
      * @param foldName
      * @param channelSftp
-     */
+     *//*
     private static void copyFile(File dir, ChannelSftp channelSftp, String ftpPath) {
 
         File[] files = dir.listFiles();
@@ -160,13 +150,13 @@ public class Upload {
         }
     }
 
-    /**
+    *//**
      * 判断FTP服务器上的路径是否存在
      *
      * @param path        ftp路径
      * @param channelSftp
      * @return
-     */
+     *//*
     private static boolean dirExistFTP(String path, ChannelSftp channelSftp) {
         try {
             SftpATTRS attrs = channelSftp.stat(path);
@@ -176,13 +166,13 @@ public class Upload {
         }
     }
 
-    /**
+    *//**
      * 上传到FTP
      *
      * @param localPath   本地文件路径
      * @param ftpPath     FTP保存路径
      * @param channelSftp
-     */
+     *//*
     private static void uploadToFTP(String localPath, String ftpPath, ChannelSftp channelSftp) {
         try {
             if (dirExistFTP(ftpPath, channelSftp)) {
@@ -193,7 +183,7 @@ public class Upload {
         } catch (SftpException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * 缓存路径

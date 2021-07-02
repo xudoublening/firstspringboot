@@ -40,26 +40,26 @@ public class Consumer {
         factory.setPassword("hxlx123");
         factory.setVirtualHost("vhost_test");*/
 
-        /*factory.setHost("117.78.48.183");
+        factory.setHost("117.78.48.183");
         factory.setPort(5672);
         factory.setUsername("hxlx");
         factory.setPassword("hxlx123");
-        factory.setVirtualHost("hx_vhost");*/
+        factory.setVirtualHost("hx_vhost");
 
-        factory.setHost("117.78.39.115");
+        /*factory.setHost("117.78.39.115");
         factory.setPort(5672);
         factory.setUsername("huaxiang10036");
         factory.setPassword("HX_rabbitmq619");
-        factory.setVirtualHost("huaxiang10036");
+        factory.setVirtualHost("huaxiang10036");*/
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
         // 交换类型：direct（直接）, topic（话题）, headers and fanout(扇出)
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
-//        String queueName = channel.queueDeclare().getQueue();
-        String queueName = "TEST_QUEUE";
-        channel.queueDeclare(queueName,true,false,false,null);
+        String queueName = channel.queueDeclare().getQueue();
+//        String queueName = "TEST_QUEUE"+n;
+
 
         if (topicStr == null || topicStr.isEmpty()) {
             System.err.println("Usage: 没有添加主题（话题） 结束");
@@ -74,7 +74,7 @@ public class Consumer {
 
         // 交换机和队列绑定 添加绑定键 severity(话题)
         channel.queueBind(queueName, EXCHANGE_NAME, topicStr);
-
+        channel.queueDeclare(queueName,true,false,false,null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
         com.rabbitmq.client.Consumer consumer = new DefaultConsumer(channel){

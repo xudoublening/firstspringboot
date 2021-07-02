@@ -1,7 +1,5 @@
 package com.example.firstspringboot.xninyTest.WriterFile;
 
-import com.ailk.mvno.crm.utils.util.ExceptionUtil;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,10 +38,10 @@ public class WriterFile {
             byte[] bt = contents.getBytes();
             fos.write(bt, 0, bt.length);
         } catch (FileNotFoundException e) {
-            System.out.println("文件不存在：" + ExceptionUtil.getTrace(e));
+            //System.out.println("文件不存在：" + ExceptionUtil.getTrace(e));
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("文件内容写入失败：" + ExceptionUtil.getTrace(e));
+            //System.out.println("文件内容写入失败：" + ExceptionUtil.getTrace(e));
             e.printStackTrace();
         }
         return fos;

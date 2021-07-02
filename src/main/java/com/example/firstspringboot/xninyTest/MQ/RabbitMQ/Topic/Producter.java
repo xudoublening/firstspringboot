@@ -17,7 +17,7 @@ public class Producter {
 
     public static void main(String[] argv) throws Exception {
 
-        String[] a = {"dog.love.cat","dog.love.cat 不可能"};
+        /*String[] a = {"dog.love.cat","dog.love.cat 不可能"};
         test1("topic-test-1 ", a);
 
         // [0]话题，[1]...[n]=message
@@ -25,12 +25,15 @@ public class Producter {
         test1("topic-test-2 ", b);
 
         String[] c = {"dog.log.cat","dog.log.cat","狗子","猫"};
-        test1("topic-test-3 ", c);
+        test1("topic-test-3 ", c);*/
 
-        String[] d = {"dog.log.sleep","dog.log.sleep","狗子","睡"};
-        test1("topic-test-4 ", d);
+//        String[] d = {"*.log.*","dog.log.sleep","狗子","睡"};
+//        test1("topic-test-4 ", d);
 
-        test1("topic-test-5 ", new String[]{});
+        String[] e = {"dog.log.sleep","dog.log.sleep","狗子","睡"};
+        test1("topic-test-4 ", e);
+
+//        test1("topic-test-5 ", new String[]{});
 
         /*String[] d = {"WECHAT.template.directSend","{\"touser\":\"oU8Ki0o6x2U6qczi0kf7wcR18rJ8\",\"template_id\":\"SuZxA4GfVYZQFT6mFq3ackiYIC6xGxlwn4QtIIohSjU\",\"url\":\"http://weixin.qq.com\",\"data\":{\"first\":{\"value\": \"小主，您的套餐情况出炉啦！\",\"color\":\"#173177\"},\"keyword1\":{\"value\":\"${PHONE}\",\"color\":\"#173177\"},\"keyword2\":{\"value\":\"${NOW_TIME}\",\"color\":\"#173177\"},\"keyword3\":{\"value\": \"${PRODUCT_NAME}\",\"color\":\"#173177\"},\"remark\":{\"value\": \"感谢您的使用！\",\"color\": \"#173177\"}}}"};
         test1("topic-test-4 ", d);*/
@@ -46,17 +49,17 @@ public class Producter {
         factory.setPassword("hxlx123");
         factory.setVirtualHost("vhost_test");*/
 
-        /*factory.setHost("117.78.48.183");
+        factory.setHost("117.78.48.183");
         factory.setPort(5672);
         factory.setUsername("hxlx");
         factory.setPassword("hxlx123");
-        factory.setVirtualHost("hx_vhost");*/
+        factory.setVirtualHost("hx_vhost");
 
-        factory.setHost("117.78.39.115");
+        /*factory.setHost("117.78.39.115");
         factory.setPort(5672);
         factory.setUsername("huaxiang10036");
         factory.setPassword("HX_rabbitmq619");
-        factory.setVirtualHost("huaxiang10036");
+        factory.setVirtualHost("huaxiang10036");*/
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
